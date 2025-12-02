@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import logoEb from "./assets/EB.PNG";
+import logoEb from "./assets/EB.png";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001/api";
 
