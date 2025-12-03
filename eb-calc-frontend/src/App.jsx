@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import logoModoDP from "./assets/mododp-logo.png"; // ajuste o nome do arquivo se for diferente
+import logoModoDP from "./assets/mododp-logo.png";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001/api";
 
@@ -22,7 +22,7 @@ function formatCurrency(value) {
   });
 }
 
-// --- Ícones simples em SVG (sem libs extras) ---
+/* ---------- Ícones SVG simples ---------- */
 
 function IconHome() {
   return (
@@ -78,14 +78,14 @@ function IconMenu() {
   );
 }
 
-// --- Componentes auxiliares ---
+/* ---------- Componentes auxiliares ---------- */
 
 function SidebarItem({ icon, label, active, collapsed, onClick }) {
   return (
     <button
+      type="button"
       className={`eb-sidebar-item ${active ? "is-active" : ""}`}
       onClick={onClick}
-      type="button"
     >
       {icon}
       {!collapsed && <span>{label}</span>}
@@ -106,50 +106,56 @@ function ComingSoon({ title }) {
   );
 }
 
-// --- Página Início / Landing do Modo DP ---
+/* ---------- Home / Landing ---------- */
 
 function HomePage({ onOpenIrrf }) {
   return (
-    <div className="mdp-home">
-      <div className="mdp-home-hero eb-card">
-        <div className="mdp-home-logo-wrap">
-          <div className="mdp-home-logo-circle">
-            <img src={logoModoDP} alt="Modo DP" />
+    <div className="mdp-landing">
+      <div className="mdp-landing-card">
+        <header className="mdp-landing-header">
+          <div className="mdp-landing-logo">
+            <img src={logoModoDP} alt="Logo Modo DP" />
+            <span>Modo DP</span>
+          </div>
+          <nav className="mdp-landing-nav">
+            <span>Início</span>
+            <span>Sobre</span>
+            <span>Serviços</span>
+            <span>Contato</span>
+          </nav>
+        </header>
+
+        <main className="mdp-landing-hero">
+          <div className="mdp-landing-icon-wrap">
+            <div className="mdp-landing-icon-circle">
+              <img src={logoModoDP} alt="Modo DP" />
+            </div>
           </div>
           <h1>Modo DP</h1>
-          <p>Um hub de ferramentas para quem vive Departamento Pessoal.</p>
-        </div>
-
-        <div className="mdp-home-cta">
-          <button
-            type="button"
-            className="eb-btn eb-btn-primary mdp-home-cta-btn"
-            onClick={onOpenIrrf}
-          >
-            Entrar no simulador IRRF 2026
-          </button>
-          <span className="mdp-home-cta-note">
-            Comece pelo IRRF 2026. Em breve: INSS, rescisão e custo do
-            funcionário.
-          </span>
-        </div>
-      </div>
-
-      <div className="mdp-home-strip">
-        <div className="mdp-chip">Simulador IRRF 2026</div>
-        <div className="mdp-chip mdp-chip-soon">Calculadora INSS · em breve</div>
-        <div className="mdp-chip mdp-chip-soon">
-          Simulador de rescisão · em breve
-        </div>
-        <div className="mdp-chip mdp-chip-soon">
-          Custo do funcionário · em breve
-        </div>
+          <h2>Em breve</h2>
+          <p>Estamos preparando algo incrível para Departamento Pessoal.</p>
+          <div className="mdp-landing-actions">
+            <button
+              type="button"
+              className="eb-btn eb-btn-primary mdp-landing-btn"
+              onClick={onOpenIrrf}
+            >
+              Acessar simulador IRRF 2026
+            </button>
+            <button
+              type="button"
+              className="eb-btn eb-btn-outline mdp-landing-btn-secondary"
+            >
+              Saiba mais (em breve)
+            </button>
+          </div>
+        </main>
       </div>
     </div>
   );
 }
 
-// --- Simulador IRRF (miolo principal) ---
+/* ---------- Simulador IRRF ---------- */
 
 function IrrfSimulator() {
   const [rows, setRows] = useState([
@@ -203,6 +209,7 @@ function IrrfSimulator() {
       const bruto = parseCurrencyToNumber(row.salarioBruto);
       const deps = Number(row.dependentes || 0);
 
+      // linha vazia
       if (!row.matricula && !row.nome && bruto === 0 && deps === 0) {
         novasLinhas.push({ ...row, baseIrrf: 0, resultado: null, erro: null });
         continue;
@@ -245,8 +252,8 @@ function IrrfSimulator() {
             erro: null,
           });
         }
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
         novasLinhas.push({
           ...row,
           baseIrrf: 0,
@@ -348,7 +355,7 @@ function IrrfSimulator() {
 
   return (
     <>
-      <div className="eb-content">
+      <div className="eb-content eb-content-irrf">
         <div className="eb-content-header">
           <h1>Simulador IRRF 2026</h1>
         </div>
@@ -393,11 +400,11 @@ function IrrfSimulator() {
                 {rows.map((row) => {
                   const r = row.resultado;
                   const inssTxt = r
-                    ? formatCurrency(r.inss_real) +
-                      " • " +
-                      (r.deducao_utilizada === r.inss_real
-                        ? "INSS"
-                        : "Simplif.")
+                    ? `${formatCurrency(r.inss_real)} • ${
+                        r.deducao_utilizada === r.inss_real
+                          ? "INSS"
+                          : "Simplif."
+                      }`
                     : "—";
                   const ir2026 = r?.ir_2026 ?? r?.ir_devido ?? 0;
 
@@ -528,8 +535,8 @@ function IrrfSimulator() {
                           )}
                         </li>
                         <li>
-                          INSS: {formatCurrency(r.inss_real)} | Simplif.:{" "}
-                          {formatCurrency(r.deducao_simplificada)} | Usado:{" "}
+                          INSS: {formatCurrency(r.inss_real)} · Simplif.:{" "}
+                          {formatCurrency(r.deducao_simplificada)} · Usado:{" "}
                           {formatCurrency(r.deducao_utilizada)}
                         </li>
                         <li>
@@ -544,9 +551,7 @@ function IrrfSimulator() {
                     </div>
                     <div className="eb-modal-section">
                       <ul>
-                        <li>
-                          IRRF 2025: {formatCurrency(ir2025)}
-                        </li>
+                        <li>IRRF 2025: {formatCurrency(ir2025)}</li>
                         <li>
                           Redução reforma:{" "}
                           {formatCurrency(r.reducao_reforma)}
@@ -578,7 +583,7 @@ function IrrfSimulator() {
   );
 }
 
-// --- App com Sidebar ---
+/* ---------- App ---------- */
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
