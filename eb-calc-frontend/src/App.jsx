@@ -112,11 +112,7 @@ function HomePage() {
   return (
     <div className="mdp-home">
       <div className="mdp-home-inner">
-        <img
-          src={logoModoDP}
-          alt="Modo DP"
-          className="mdp-home-logo"
-        />
+        <img src={logoModoDP} alt="Modo DP" className="mdp-home-logo" />
         <p className="mdp-home-text">
           Seu futuro ecossistema de ferramentas para DP e RH está quase pronto.
         </p>
@@ -124,7 +120,6 @@ function HomePage() {
     </div>
   );
 }
-
 
 /* ---------- Simulador IRRF ---------- */
 
@@ -636,15 +631,15 @@ function App() {
         </header>
 
         <main className="eb-main">
-          {activePage === "home" && (
-            <HomePage onOpenIrrf={() => setActivePage("irrf")} />
-          )}
-          {activePage === "irrf" && <IrrfSimulator />}
-          {activePage === "inss" && <ComingSoon title={titleMap.inss} />}
-          {activePage === "rescisao" && (
-            <ComingSoon title={titleMap.rescisao} />
-          )}
-          {activePage === "custo" && <ComingSoon title={titleMap.custo} />}
+          <div className="eb-main-full">
+            {activePage === "home" && <HomePage />}
+            {activePage === "irrf" && <IrrfSimulator />}
+            {activePage === "inss" && <ComingSoon title={titleMap.inss} />}
+            {activePage === "rescisao" && (
+              <ComingSoon title={titleMap.rescisao} />
+            )}
+            {activePage === "custo" && <ComingSoon title={titleMap.custo} />}
+          </div>
         </main>
       </div>
     </div>
