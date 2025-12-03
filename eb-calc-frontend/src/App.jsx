@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import logoEb from "./assets/EB.png";
+import logoModoDP from "./assets/mododp-logo.png"; // ajuste o nome do arquivo conforme o que você tiver
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001/api";
 
@@ -22,7 +22,7 @@ function formatCurrency(value) {
   });
 }
 
-// --- Icones simples em SVG (sem libs extras) ---
+// --- Ícones simples em SVG (sem libs extras) ---
 
 function IconIrrf() {
   return (
@@ -230,7 +230,7 @@ function IrrfSimulator() {
     const html = `
       <html>
         <head>
-          <title>Memória de Cálculo - EB Calc</title>
+          <title>Memória de Cálculo - Modo DP IRRF 2026</title>
           <style>
             body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 24px; }
             h1 { font-size: 20px; margin-bottom: 4px; }
@@ -241,7 +241,7 @@ function IrrfSimulator() {
           </style>
         </head>
         <body>
-          <h1>Memória de Cálculo - EB Calc</h1>
+          <h1>Memória de Cálculo - Modo DP · IRRF 2026</h1>
           <div>Colaborador: <strong>${row.matricula || ""} - ${
       row.nome || ""
     }</strong></div>
@@ -544,8 +544,8 @@ function App() {
       <aside className="eb-sidebar">
         <div className="eb-sidebar-top">
           <div className="eb-sidebar-logo">
-            <img src={logoEb} alt="EB Educação" />
-            {!collapsed && <span>EB Calc</span>}
+            <img src={logoModoDP} alt="Modo DP" />
+            {!collapsed && <span>Modo DP</span>}
           </div>
           <button
             type="button"
@@ -590,7 +590,9 @@ function App() {
 
       <div className="eb-shell-main">
         <header className="eb-topbar">
-          <span className="eb-topbar-title">{titleMap[activePage]}</span>
+          <span className="eb-topbar-title">
+            {titleMap[activePage]} · Modo DP
+          </span>
         </header>
 
         <main className="eb-main">
