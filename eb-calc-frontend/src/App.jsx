@@ -106,54 +106,25 @@ function ComingSoon({ title }) {
   );
 }
 
-/* ---------- Home / Landing ---------- */
+// --- Página Início: logo + frase centralizada ---
 
-function HomePage({ onOpenIrrf }) {
+function HomePage() {
   return (
-    <div className="mdp-landing">
-      <div className="mdp-landing-card">
-        <header className="mdp-landing-header">
-          <div className="mdp-landing-logo">
-            <img src={logoModoDP} alt="Logo Modo DP" />
-            <span>Modo DP</span>
-          </div>
-          <nav className="mdp-landing-nav">
-            <span>Início</span>
-            <span>Sobre</span>
-            <span>Serviços</span>
-            <span>Contato</span>
-          </nav>
-        </header>
-
-        <main className="mdp-landing-hero">
-          <div className="mdp-landing-icon-wrap">
-            <div className="mdp-landing-icon-circle">
-              <img src={logoModoDP} alt="Modo DP" />
-            </div>
-          </div>
-          <h1>Modo DP</h1>
-          <h2>Em breve</h2>
-          <p>Estamos preparando algo incrível para Departamento Pessoal.</p>
-          <div className="mdp-landing-actions">
-            <button
-              type="button"
-              className="eb-btn eb-btn-primary mdp-landing-btn"
-              onClick={onOpenIrrf}
-            >
-              Acessar simulador IRRF 2026
-            </button>
-            <button
-              type="button"
-              className="eb-btn eb-btn-outline mdp-landing-btn-secondary"
-            >
-              Saiba mais (em breve)
-            </button>
-          </div>
-        </main>
+    <div className="mdp-home">
+      <div className="mdp-home-inner">
+        <img
+          src={logoModoDP}
+          alt="Modo DP"
+          className="mdp-home-logo"
+        />
+        <p className="mdp-home-text">
+          Seu futuro ecossistema de ferramentas para DP e RH está quase pronto.
+        </p>
       </div>
     </div>
   );
 }
+
 
 /* ---------- Simulador IRRF ---------- */
 
