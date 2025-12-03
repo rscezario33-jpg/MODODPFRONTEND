@@ -1,13 +1,19 @@
 :root {
-  --bg-page: #f5f5f7;
+  --bg-page: #f3f4f6;
   --bg-card: #ffffff;
   --border-subtle: #e5e7eb;
   --border-strong: #cbd5e1;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --accent: #2563eb;
-  --accent-strong: #1d4ed8;
-  --accent-soft: #dbeafe;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  --sidebar-bg: #131f2f;
+  --accent: #46549d;         /* Azul DP */
+  --accent-strong: #2f3a78;
+  --accent-soft: #e0e4ff;
+
+  --accent-roxo: #c25b7a;    /* Roxo DP */
+  --accent-laranja: #f76140; /* Laranja DP */
+
   --danger: #b91c1c;
   --danger-soft: #fee2e2;
 }
@@ -33,13 +39,12 @@ body {
 .eb-shell-layout {
   min-height: 100vh;
   display: flex;
-  background: radial-gradient(
-    circle at top,
-    #0f172a 0,
-    #020617 25%,
-    #020617 40%,
-    #0b1220 60%,
-    #111827 100%
+  background: linear-gradient(
+    135deg,
+    #111827 0%,
+    #131f2f 22%,
+    #f3f4f6 45%,
+    #f9fafb 100%
   );
   color: var(--text-main);
 }
@@ -63,8 +68,8 @@ body {
   padding: 14px 12px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #020617, #020617, #0f172a);
-  border-right: 1px solid rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at top, #1f2937 0, #131f2f 45%, #050816 100%);
+  border-right: 1px solid rgba(148, 163, 184, 0.3);
   color: #e5e7eb;
 }
 
@@ -137,15 +142,21 @@ body {
   font-size: 0.8rem;
   cursor: pointer;
   text-align: left;
-  transition: background 0.12s ease, color 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
 }
 
 .eb-sidebar-item:hover {
   background: rgba(15, 23, 42, 0.9);
+  transform: translateX(1px);
 }
 
 .eb-sidebar-item.is-active {
-  background: linear-gradient(90deg, #2563eb, #22c55e);
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent-roxo) 40%,
+    var(--accent-laranja) 100%
+  );
   color: #f9fafb;
 }
 
@@ -157,9 +168,8 @@ body {
   flex-direction: column;
   background: radial-gradient(
     circle at top left,
-    #1d4ed8 0,
-    #e5f0ff 30%,
-    #f5f5f7 55%,
+    rgba(70, 84, 157, 0.25) 0,
+    #f3f4f6 40%,
     #f9fafb 100%
   );
 }
@@ -179,18 +189,18 @@ body {
 .eb-topbar-title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #111827;
 }
 
 /* Main content */
 
 .eb-main {
   flex: 1;
-  padding: 24px 28px 24px; /* mais espaçamento, sensação de 125% */
+  padding: 24px 28px 24px;
 }
 
 .eb-content {
-  max-width: 1360px; /* mais largo que 1120px */
+  max-width: 1360px;
   margin: 0 auto;
 }
 
@@ -203,7 +213,7 @@ body {
 
 .eb-content-header h1 {
   margin: 0;
-  font-size: 1.6rem; /* maior que 1.4rem */
+  font-size: 1.6rem;
 }
 
 /* Cards */
@@ -256,10 +266,15 @@ body {
 }
 
 .eb-btn-primary {
-  background: linear-gradient(90deg, var(--accent), #22c55e);
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent-roxo) 40%,
+    var(--accent-laranja) 100%
+  );
   color: white;
   border-color: var(--accent);
-  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 10px 22px rgba(70, 84, 157, 0.4);
 }
 
 .eb-btn-primary:disabled {
@@ -270,7 +285,7 @@ body {
 
 .eb-btn-primary:not(:disabled):hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 14px 30px rgba(70, 84, 157, 0.6);
 }
 
 .eb-btn-secondary {
@@ -317,7 +332,7 @@ body {
 .eb-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem; /* era 0.84rem */
+  font-size: 0.9rem;
 }
 
 .eb-table thead {
@@ -326,13 +341,13 @@ body {
 
 .eb-table th,
 .eb-table td {
-  padding: 8px 11px; /* era 6px 9px */
+  padding: 8px 11px;
   border-bottom: 1px solid var(--border-subtle);
   text-align: left;
 }
 
 .eb-table th {
-  font-size: 0.82rem; /* era 0.75rem */
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -344,7 +359,7 @@ body {
 }
 
 .eb-table tbody tr:hover {
-  background: rgba(239, 246, 255, 0.7);
+  background: rgba(219, 234, 254, 0.7);
 }
 
 .eb-table input {
@@ -352,7 +367,7 @@ body {
   border-radius: 999px;
   border: 1px solid var(--border-strong);
   padding: 5px 9px;
-  font-size: 0.88rem; /* era 0.8rem */
+  font-size: 0.88rem;
   background: #f9fafb;
   color: var(--text-main);
 }
@@ -369,7 +384,7 @@ body {
 }
 
 .eb-cell-small {
-  font-size: 0.82rem; /* um pouquinho maior */
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 
