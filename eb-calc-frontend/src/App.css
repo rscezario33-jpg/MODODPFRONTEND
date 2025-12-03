@@ -517,140 +517,109 @@ body {
   }
 }
 
-/* -------- Home / Início -------- */
+/* -------- Home / Landing Modo DP -------- */
 
-.eb-home-hero {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-  margin-bottom: 16px;
-  background: radial-gradient(circle at top left, #e0e7ff 0, #ffffff 45%, #f9fafb 100%);
+.mdp-home {
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
-.eb-home-hero-left {
-  flex: 2;
+.mdp-home-hero {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+  background: radial-gradient(
+      circle at top,
+      rgba(70, 84, 157, 0.16) 0,
+      #ffffff 45%,
+      #f9fafb 100%
+    );
 }
 
-.eb-home-hero-left h1 {
-  margin: 0;
-  font-size: 1.7rem;
-  line-height: 1.2;
+.mdp-home-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.eb-home-hero-left p {
+.mdp-home-logo-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 0% 0%, #f76140 0, #46549d 60%, #131f2f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
+}
+
+.mdp-home-logo-circle img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.mdp-home-logo-wrap h1 {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.9rem;
+}
+
+.mdp-home-logo-wrap p {
+  margin: 0;
+  font-size: 0.92rem;
   color: var(--text-muted);
 }
 
-.eb-home-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--accent-strong);
-  background: rgba(70, 84, 157, 0.09);
-  border: 1px solid rgba(70, 84, 157, 0.18);
-}
-
-.eb-home-actions {
+.mdp-home-cta {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 8px;
 }
 
-.eb-home-note {
+.mdp-home-cta-btn {
+  padding-inline: 24px;
+}
+
+.mdp-home-cta-note {
   font-size: 0.8rem;
   color: var(--text-muted);
 }
 
-.eb-home-hero-right {
-  flex: 1.2;
+/* Faixa de módulos */
+
+.mdp-home-strip {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
 }
 
-.eb-home-pill {
+.mdp-chip {
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 0.78rem;
+  padding: 6px 12px;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--accent-strong);
   background: #eef2ff;
-  border: 1px solid rgba(70, 84, 157, 0.25);
+  border: 1px solid rgba(70, 84, 157, 0.3);
 }
 
-.eb-home-pill-alt {
-  color: #ffffff;
-  background: linear-gradient(
-    90deg,
-    var(--accent) 0%,
-    var(--accent-roxo) 50%,
-    var(--accent-laranja) 100%
-  );
-  border: none;
-}
-
-.eb-home-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.eb-home-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.eb-home-card h2 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.eb-home-card p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.eb-home-card-soon {
-  position: relative;
-}
-
-.eb-home-chip {
-  align-self: flex-start;
-  margin-top: 4px;
-  border-radius: 999px;
-  padding: 3px 8px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  background: #fef3c7;
+.mdp-chip-soon {
   color: #92400e;
+  background: #fef3c7;
+  border-color: #facc15;
 }
 
-/* Responsivo da Home */
-
-@media (max-width: 900px) {
-  .eb-home-hero {
-    flex-direction: column;
-  }
-
-  .eb-home-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+/* Responsivo */
 
 @media (max-width: 600px) {
-  .eb-home-grid {
-    grid-template-columns: 1fr;
+  .mdp-home-hero {
+    padding: 22px 18px;
   }
 }
