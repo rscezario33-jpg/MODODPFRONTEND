@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import logoModoDP from "./assets/mododp-logo.png"; // ajuste o nome do arquivo conforme o que você tiver
+import logoModoDP from "./assets/mododp-logo.png"; // ajuste o nome do arquivo se for diferente
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3001/api";
 
@@ -23,6 +23,15 @@ function formatCurrency(value) {
 }
 
 // --- Ícones simples em SVG (sem libs extras) ---
+
+function IconHome() {
+  return (
+    <svg viewBox="0 0 24 24" className="eb-icon">
+      <path d="M4 11.5 12 4l8 7.5" />
+      <path d="M6.5 11V20h11V11" />
+    </svg>
+  );
+}
 
 function IconIrrf() {
   return (
@@ -92,6 +101,82 @@ function ComingSoon({ title }) {
       </div>
       <div className="eb-card eb-coming-card">
         <p>Em construção.</p>
+      </div>
+    </div>
+  );
+}
+
+// --- Página Início ---
+
+function HomePage({ onOpenIrrf }) {
+  return (
+    <div className="eb-content">
+      <div className="eb-home-hero eb-card">
+        <div className="eb-home-hero-left">
+          <div className="eb-home-badge">Modo DP · Ferramentas para DP</div>
+          <h1>Simulador IRRF 2026 para quem vive Departamento Pessoal.</h1>
+          <p>
+            Calcule o IRRF com a lógica da reforma, compare 2025 x 2026 e tenha
+            uma memória de cálculo clara para cada colaborador, em segundos.
+          </p>
+          <div className="eb-home-actions">
+            <button
+              type="button"
+              className="eb-btn eb-btn-primary"
+              onClick={onOpenIrrf}
+            >
+              Abrir simulador IRRF 2026
+            </button>
+            <span className="eb-home-note">
+              INSS, rescisão e custo do funcionário em breve.
+            </span>
+          </div>
+        </div>
+        <div className="eb-home-hero-right">
+          <div className="eb-home-pill">Multi-colaboradores</div>
+          <div className="eb-home-pill eb-home-pill-alt">
+            Memória de cálculo didática
+          </div>
+          <div className="eb-home-pill">Pensado para DP, não para leigos</div>
+        </div>
+      </div>
+
+      <div className="eb-home-grid">
+        <div className="eb-card eb-home-card">
+          <h2>Simulador IRRF 2026</h2>
+          <p>
+            Simule o IRRF com base na nova legislação, escolhendo o melhor
+            cenário entre INSS real e desconto simplificado.
+          </p>
+          <button
+            type="button"
+            className="eb-btn eb-btn-secondary"
+            onClick={onOpenIrrf}
+          >
+            Ir para o simulador
+          </button>
+        </div>
+
+        <div className="eb-card eb-home-card eb-home-card-soon">
+          <h2>Calculadora INSS</h2>
+          <p>Em breve, cálculo detalhado por faixa, pronto para conferência.</p>
+          <span className="eb-home-chip">Em breve</span>
+        </div>
+
+        <div className="eb-card eb-home-card eb-home-card-soon">
+          <h2>Simulador de rescisão</h2>
+          <p>Modelos de rescisão alinhados à rotina real do DP.</p>
+          <span className="eb-home-chip">Em breve</span>
+        </div>
+
+        <div className="eb-card eb-home-card eb-home-card-soon">
+          <h2>Custo do funcionário</h2>
+          <p>
+            Visualize o custo total mensal por colaborador, além do salário
+            nominal.
+          </p>
+          <span className="eb-home-chip">Em breve</span>
+        </div>
       </div>
     </div>
   );
@@ -530,14 +615,19 @@ function IrrfSimulator() {
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
-  const [activePage, setActivePage] = useState("irrf");
+  const [activePage, setActivePage] = useState("home");
 
   const titleMap = {
+    home: "Início",
     irrf: "Simulador IRRF 2026",
     inss: "Calculadora INSS",
     rescisao: "Simulador de rescisão",
     custo: "Custo do funcionário",
   };
+
+  useEffect(() => {
+    document.title = `${titleMap[activePage]} · Modo DP`;
+  }, [activePage]);
 
   return (
     <div className={`eb-shell-layout ${collapsed ? "is-collapsed" : ""}`}>
@@ -557,6 +647,13 @@ function App() {
         </div>
 
         <nav className="eb-sidebar-nav">
+          <SidebarItem
+            icon={<IconHome />}
+            label="Início"
+            collapsed={collapsed}
+            active={activePage === "home"}
+            onClick={() => setActivePage("home")}
+          />
           <SidebarItem
             icon={<IconIrrf />}
             label="Simulador IRRF 2026"
@@ -596,17 +693,15 @@ function App() {
         </header>
 
         <main className="eb-main">
-          {activePage === "irrf" && <IrrfSimulator />}
-
-          {activePage === "inss" && (
-            <ComingSoon title={titleMap.inss} />
+          {activePage === "home" && (
+            <HomePage onOpenIrrf={() => setActivePage("irrf")} />
           )}
+          {activePage === "irrf" && <IrrfSimulator />}
+          {activePage === "inss" && <ComingSoon title={titleMap.inss} />}
           {activePage === "rescisao" && (
             <ComingSoon title={titleMap.rescisao} />
           )}
-          {activePage === "custo" && (
-            <ComingSoon title={titleMap.custo} />
-          )}
+          {activePage === "custo" && <ComingSoon title={titleMap.custo} />}
         </main>
       </div>
     </div>
