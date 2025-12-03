@@ -197,7 +197,7 @@ body {
   padding: 24px 28px 28px;
   display: flex;
   align-items: stretch;
-  justify-content: center;
+  justify-content: stretch; /* ocupa a largura toda */
 }
 
 /* ---------- Home simples: logo + frase ---------- */
@@ -206,10 +206,9 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;    /* centraliza vertical */
-  justify-content: center;/* centraliza horizontal */
+  align-items: center;     /* centraliza verticalmente */
+  justify-content: center; /* centraliza horizontalmente */
 }
-
 
 .mdp-home-inner {
   display: flex;
@@ -231,117 +230,6 @@ body {
   margin: 0;
   font-size: 0.95rem;
   color: var(--text-muted);
-}
-
-/* Header da landing */
-
-.mdp-landing-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.mdp-landing-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.mdp-landing-logo img {
-  width: 32px;
-  height: 32px;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-.mdp-landing-logo span {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #f9fafb;
-}
-
-.mdp-landing-nav {
-  display: flex;
-  gap: 18px;
-  font-size: 0.8rem;
-  color: rgba(209, 213, 219, 0.85);
-}
-
-.mdp-landing-nav span {
-  cursor: default;
-}
-
-/* Hero */
-
-.mdp-landing-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 14px;
-}
-
-.mdp-landing-icon-wrap {
-  margin-bottom: 6px;
-}
-
-.mdp-landing-icon-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 24px;
-  background: radial-gradient(
-    circle at 0% 0%,
-    #f76140 0,
-    #c25b7a 40%,
-    #46549d 75%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.85);
-}
-
-.mdp-landing-icon-circle img {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-}
-
-.mdp-landing-hero h1 {
-  margin: 0;
-  font-size: 2rem;
-  color: #f9fafb;
-}
-
-.mdp-landing-hero h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  line-height: 1.1;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.mdp-landing-hero p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: rgba(209, 213, 219, 0.86);
-}
-
-.mdp-landing-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 2px;
-}
-
-.mdp-landing-btn {
-  padding-inline: 22px;
-}
-
-.mdp-landing-btn-secondary {
-  border-width: 1px;
 }
 
 /* ---------- Botões ---------- */
@@ -423,12 +311,15 @@ body {
 
 .eb-content {
   width: 100%;
-  max-width: 1220px;
-  margin: 0 auto;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .eb-content-irrf {
-  max-width: 1320px;
+  width: 100%;
+  height: 100%;
 }
 
 .eb-content-header {
@@ -443,6 +334,7 @@ body {
 /* ---------- Tabela / grid IRRF ---------- */
 
 .eb-grid-card {
+  flex: 1;
   background: rgba(15, 23, 42, 0.9);
   border-radius: 24px;
   border: 1px solid rgba(30, 64, 175, 0.6);
@@ -657,55 +549,7 @@ body {
     justify-content: center;
   }
 
-  .mdp-landing-card {
-    padding-inline: 20px;
-  }
-
   .eb-main {
     padding-inline: 16px;
   }
-}
-
-@media (max-width: 600px) {
-  .mdp-landing-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .mdp-landing-nav {
-    gap: 12px;
-  }
-}
-
-/* ---------- Home simples: logo + frase ---------- */
-
-.mdp-home {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;    /* centraliza vertical */
-  justify-content: center;/* centraliza horizontal */
-}
-
-
-.mdp-home-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-align: center;
-}
-
-.mdp-home-logo {
-  width: 36vw;
-  max-width: 280px;
-  min-width: 180px;
-  height: auto;
-  object-fit: contain;
-}
-
-.mdp-home-text {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-muted);
 }
