@@ -516,3 +516,141 @@ body {
     justify-content: center;
   }
 }
+
+/* -------- Home / Início -------- */
+
+.eb-home-hero {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 16px;
+  background: radial-gradient(circle at top left, #e0e7ff 0, #ffffff 45%, #f9fafb 100%);
+}
+
+.eb-home-hero-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eb-home-hero-left h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+.eb-home-hero-left p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.eb-home-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  background: rgba(70, 84, 157, 0.09);
+  border: 1px solid rgba(70, 84, 157, 0.18);
+}
+
+.eb-home-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.eb-home-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.eb-home-hero-right {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.eb-home-pill {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent-strong);
+  background: #eef2ff;
+  border: 1px solid rgba(70, 84, 157, 0.25);
+}
+
+.eb-home-pill-alt {
+  color: #ffffff;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent-roxo) 50%,
+    var(--accent-laranja) 100%
+  );
+  border: none;
+}
+
+.eb-home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.eb-home-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eb-home-card h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.eb-home-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.eb-home-card-soon {
+  position: relative;
+}
+
+.eb-home-chip {
+  align-self: flex-start;
+  margin-top: 4px;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Responsivo da Home */
+
+@media (max-width: 900px) {
+  .eb-home-hero {
+    flex-direction: column;
+  }
+
+  .eb-home-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .eb-home-grid {
+    grid-template-columns: 1fr;
+  }
+}
