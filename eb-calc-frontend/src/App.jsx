@@ -106,76 +106,43 @@ function ComingSoon({ title }) {
   );
 }
 
-// --- Página Início ---
+// --- Página Início / Landing do Modo DP ---
 
 function HomePage({ onOpenIrrf }) {
   return (
-    <div className="eb-content">
-      <div className="eb-home-hero eb-card">
-        <div className="eb-home-hero-left">
-          <div className="eb-home-badge">Modo DP · Ferramentas para DP</div>
-          <h1>Simulador IRRF 2026 para quem vive Departamento Pessoal.</h1>
-          <p>
-            Calcule o IRRF com a lógica da reforma, compare 2025 x 2026 e tenha
-            uma memória de cálculo clara para cada colaborador, em segundos.
-          </p>
-          <div className="eb-home-actions">
-            <button
-              type="button"
-              className="eb-btn eb-btn-primary"
-              onClick={onOpenIrrf}
-            >
-              Abrir simulador IRRF 2026
-            </button>
-            <span className="eb-home-note">
-              INSS, rescisão e custo do funcionário em breve.
-            </span>
+    <div className="mdp-home">
+      <div className="mdp-home-hero eb-card">
+        <div className="mdp-home-logo-wrap">
+          <div className="mdp-home-logo-circle">
+            <img src={logoModoDP} alt="Modo DP" />
           </div>
+          <h1>Modo DP</h1>
+          <p>Um hub de ferramentas para quem vive Departamento Pessoal.</p>
         </div>
-        <div className="eb-home-hero-right">
-          <div className="eb-home-pill">Multi-colaboradores</div>
-          <div className="eb-home-pill eb-home-pill-alt">
-            Memória de cálculo didática
-          </div>
-          <div className="eb-home-pill">Pensado para DP, não para leigos</div>
+
+        <div className="mdp-home-cta">
+          <button
+            type="button"
+            className="eb-btn eb-btn-primary mdp-home-cta-btn"
+            onClick={onOpenIrrf}
+          >
+            Entrar no simulador IRRF 2026
+          </button>
+          <span className="mdp-home-cta-note">
+            Comece pelo IRRF 2026. Em breve: INSS, rescisão e custo do
+            funcionário.
+          </span>
         </div>
       </div>
 
-      <div className="eb-home-grid">
-        <div className="eb-card eb-home-card">
-          <h2>Simulador IRRF 2026</h2>
-          <p>
-            Simule o IRRF com base na nova legislação, escolhendo o melhor
-            cenário entre INSS real e desconto simplificado.
-          </p>
-          <button
-            type="button"
-            className="eb-btn eb-btn-secondary"
-            onClick={onOpenIrrf}
-          >
-            Ir para o simulador
-          </button>
+      <div className="mdp-home-strip">
+        <div className="mdp-chip">Simulador IRRF 2026</div>
+        <div className="mdp-chip mdp-chip-soon">Calculadora INSS · em breve</div>
+        <div className="mdp-chip mdp-chip-soon">
+          Simulador de rescisão · em breve
         </div>
-
-        <div className="eb-card eb-home-card eb-home-card-soon">
-          <h2>Calculadora INSS</h2>
-          <p>Em breve, cálculo detalhado por faixa, pronto para conferência.</p>
-          <span className="eb-home-chip">Em breve</span>
-        </div>
-
-        <div className="eb-card eb-home-card eb-home-card-soon">
-          <h2>Simulador de rescisão</h2>
-          <p>Modelos de rescisão alinhados à rotina real do DP.</p>
-          <span className="eb-home-chip">Em breve</span>
-        </div>
-
-        <div className="eb-card eb-home-card eb-home-card-soon">
-          <h2>Custo do funcionário</h2>
-          <p>
-            Visualize o custo total mensal por colaborador, além do salário
-            nominal.
-          </p>
-          <span className="eb-home-chip">Em breve</span>
+        <div className="mdp-chip mdp-chip-soon">
+          Custo do funcionário · em breve
         </div>
       </div>
     </div>
