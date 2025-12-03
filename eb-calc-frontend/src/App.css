@@ -693,12 +693,12 @@ body {
 
 .mdp-home {
   width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;    /* centraliza vertical */
+  justify-content: center;/* centraliza horizontal */
 }
+
 
 .mdp-home-inner {
   display: flex;
