@@ -196,9 +196,18 @@ body {
   flex: 1;
   padding: 24px 28px 28px;
   display: flex;
-  align-items: stretch;
-  justify-content: stretch; /* ocupa a largura toda */
 }
+
+/* wrapper que faz cada página ocupar a tela toda */
+.eb-main-full {
+  flex: 1;
+  display: flex;
+}
+
+.eb-main-full > * {
+  flex: 1;
+}
+
 
 /* ---------- Home simples: logo + frase ---------- */
 
